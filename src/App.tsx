@@ -3,6 +3,7 @@ import Button from "./components/Button";
 import Input from "./components/Input";
 import Card from "./components/Card";
 import Modal from "./components/Modal";
+import Loader from "./components/Loader";
 import "./App.css";
 
 function App() {
@@ -19,6 +20,9 @@ function App() {
 
   // Button loading state
   const [loading, setLoading] = useState(false);
+
+  // Loader state
+  const [showOverlay, setShowOverlay] = useState(false);
 
   // Input validation
   const validateEmail = (value: string) => {
@@ -63,6 +67,11 @@ function App() {
   const handleDelete = () => {
     alert("Item deleted successfully!");
     setConfirmModalOpen(false);
+  };
+
+  const handleOverlayDemo = () => {
+    setShowOverlay(true);
+    setTimeout(() => setShowOverlay(false), 3000);
   };
 
   return (
@@ -401,6 +410,150 @@ function App() {
           </Button>
         </Modal.Footer>
       </Modal>
+
+      <section className="section">
+        <h2 className="section-title">Loader Variants</h2>
+        <section>
+          <Card variant="elevated">
+            <Card.Header>All Loader Variants</Card.Header>
+            <Card.Body>
+              <div className="demo-group">
+                <div className="loader-demo-item">
+                  <Loader variant="spinner" />
+                  <p>Spinner</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader variant="dots" />
+                  <p>Dots</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader variant="pulse" />
+                  <p>Pulse</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader variant="bars" />
+                  <p>Bars</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader variant="ring" />
+                  <p>Ring</p>
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </section>
+
+        {/* Sizes */}
+        <section>
+          <h2 className="section-title">Loader Sizes</h2>
+          <Card variant="elevated">
+            <Card.Header>Different Sizes</Card.Header>
+            <Card.Body>
+              <div className="demo-group">
+                <div className="loader-demo-item">
+                  <Loader size="small" variant="spinner" />
+                  <p>Small</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader size="medium" variant="spinner" />
+                  <p>Medium</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader size="large" variant="spinner" />
+                  <p>Large</p>
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </section>
+
+        {/* Colors */}
+        <section>
+          <h2 className="section-title">Loader Colors</h2>
+          <Card variant="elevated">
+            <Card.Header>Different Colors</Card.Header>
+            <Card.Body>
+              <div className="demo-group">
+                <div className="loader-demo-item">
+                  <Loader color="primary" />
+                  <p>Primary</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader color="secondary" />
+                  <p>Secondary</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader color="success" />
+                  <p>Success</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader color="danger" />
+                  <p>Danger</p>
+                </div>
+                <div className="loader-demo-item">
+                  <Loader customColor="#ff6b6b" />
+                  <p>Custom</p>
+                </div>
+              </div>
+            </Card.Body>
+          </Card>
+        </section>
+
+        {/* With Text */}
+        <section>
+          <h2 className="section-title">Loader with Text</h2>
+          <Card variant="elevated">
+            <Card.Header>Loading Messages</Card.Header>
+            <Card.Body>
+              <div className="demo-group">
+                <Loader variant="spinner" text="Loading..." />
+                <Loader variant="dots" text="Please wait" />
+                <Loader variant="pulse" text="Processing" size="large" />
+              </div>
+            </Card.Body>
+          </Card>
+        </section>
+
+        {/* Overlay Demo */}
+        <section>
+          <h2 className="section-title">Overlay Loader</h2>
+          <Card variant="elevated">
+            <Card.Header>Full-Screen Loading</Card.Header>
+            <Card.Body>
+              <Button onClick={handleOverlayDemo} variant="primary">
+                Show Overlay Loader (3 seconds)
+              </Button>
+            </Card.Body>
+          </Card>
+        </section>
+
+        {/* Overlay Loader */}
+        {showOverlay && (
+          <Loader
+            overlay
+            variant="spinner"
+            size="large"
+            color="white"
+            text="Loading, please wait..."
+          />
+        )}
+      </section>
+
+      {/* Usage in Button */}
+      <section>
+        <h2 className="section-title">Integrated with Button</h2>
+        <Card variant="elevated">
+          <Card.Header>Button Loading States</Card.Header>
+          <Card.Body>
+            <div className="demo-group">
+              <Button loading>Loading...</Button>
+              <Button variant="secondary" loading>
+                Processing
+              </Button>
+            </div>
+          </Card.Body>
+        </Card>
+      </section>
     </div>
   );
 }
