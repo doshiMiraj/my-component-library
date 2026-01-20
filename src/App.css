@@ -1,31 +1,56 @@
 .app {
-  max-width: 1200px;
+  max-width: 1400px;
   margin: 0 auto;
   padding: 2rem;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
 }
 
-h1 {
-  color: #1f2937;
-  margin-bottom: 2rem;
+.app-header {
+  text-align: center;
+  margin-bottom: 3rem;
+  color: white;
 }
 
-h2 {
-  color: #374151;
-  font-size: 1.5rem;
-  margin-bottom: 1rem;
-  margin-top: 2rem;
+.app-header h1 {
+  font-size: 3rem;
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
 }
 
-h3 {
-  margin: 0 0 0.5rem 0;
-  color: #1f2937;
+.subtitle {
+  font-size: 1.125rem;
+  opacity: 0.9;
 }
 
-section {
+.section {
   margin-bottom: 3rem;
 }
 
+.section-title {
+  color: white;
+  font-size: 2rem;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+/* Grid Layouts */
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 1.5rem;
+  margin-top: 1.5rem;
+}
+
+/* Demo Groups */
 .demo-group {
   display: flex;
   flex-wrap: wrap;
@@ -33,26 +58,22 @@ section {
   align-items: center;
 }
 
-.demo-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+.demo-column {
+  display: flex;
+  flex-direction: column;
   gap: 1.5rem;
-}
-
-section:last-of-type {
-  margin-bottom: 0;
 }
 
 /* Profile Content */
 .profile-content {
   display: flex;
-  gap: 1rem;
+  gap: 1.5rem;
   align-items: center;
 }
 
 .avatar {
-  width: 60px;
-  height: 60px;
+  width: 70px;
+  height: 70px;
   border-radius: 50%;
   background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
   display: flex;
@@ -60,65 +81,53 @@ section:last-of-type {
   justify-content: center;
   color: white;
   font-weight: bold;
-  font-size: 1.25rem;
+  font-size: 1.5rem;
   flex-shrink: 0;
 }
 
-.profile-content h3 {
-  margin: 0 0 0.25rem 0;
-  font-size: 1.125rem;
+.profile-info {
+  flex: 1;
 }
 
-.profile-content p {
-  margin: 0.25rem 0;
-  font-size: 0.875rem;
-  color: #6b7280;
-}
-
-.text-muted {
-  color: #9ca3af !important;
-}
-
-/* Product Card */
-.product-title {
+.profile-info h3 {
+  margin: 0 0 0.5rem 0;
   font-size: 1.25rem;
-  margin-bottom: 0.5rem;
+  color: #1f2937;
 }
 
-.product-price {
-  font-size: 1.5rem;
-  font-weight: bold;
-  color: #3b82f6;
-  margin-bottom: 1rem;
-}
-
-.product-description {
+.profile-info .role {
+  margin: 0.25rem 0;
   color: #6b7280;
-  line-height: 1.5;
-  margin: 0;
-}
-
-/* Statistics */
-.stats-grid {
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  gap: 1.5rem;
-}
-
-.stat-item {
-  text-align: center;
-}
-
-.stat-value {
-  font-size: 2rem;
-  font-weight: bold;
-  color: #3b82f6;
-  margin-bottom: 0.25rem;
-}
-
-.stat-label {
   font-size: 0.875rem;
-  color: #6b7280;
-  text-transform: uppercase;
-  letter-spacing: 0.05em;
+}
+
+.profile-info .email {
+  margin: 0.25rem 0;
+  color: #9ca3af;
+  font-size: 0.875rem;
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+  .app {
+    padding: 1rem;
+  }
+
+  .app-header h1 {
+    font-size: 2rem;
+  }
+
+  .section-title {
+    font-size: 1.5rem;
+  }
+
+  .grid-2,
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .profile-content {
+    flex-direction: column;
+    text-align: center;
+  }
 }
